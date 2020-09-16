@@ -11,9 +11,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         FragmentManager supportFragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = supportFragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.content, new BestSellerBooksFragment(), null).commit();
+        fragmentTransaction.replace(R.id.content, new BestSellerBooksFragment(MainActivity.this), null).commit();
     }
 }

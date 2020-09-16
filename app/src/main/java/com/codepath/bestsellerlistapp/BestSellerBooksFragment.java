@@ -30,12 +30,15 @@ public class BestSellerBooksFragment extends Fragment implements OnListFragmentI
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public BestSellerBooksFragment() {
+
+    static Context context;
+    public BestSellerBooksFragment(Context context) {
+        this.context = context;
     }
 
     @SuppressWarnings("unused")
     public static BestSellerBooksFragment newInstance(int columnCount) {
-        BestSellerBooksFragment fragment = new BestSellerBooksFragment();
+        BestSellerBooksFragment fragment = new BestSellerBooksFragment(context);
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -62,7 +65,7 @@ public class BestSellerBooksFragment extends Fragment implements OnListFragmentI
             @Override
             public void onSuccess(List<BestSellerBook> models) {
                 progressBar.hide();
-                recyclerView.setAdapter(new BestSellerBooksRecyclerViewAdapter(models, BestSellerBooksFragment.this));
+                recyclerView.setAdapter(new BestSellerBooksRecyclerViewAdapter(models, BestSellerBooksFragment.this,context));
                 Log.d("BestSellerBooksFragment", "response successful");
             }
 
